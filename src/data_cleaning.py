@@ -15,10 +15,6 @@ class DataStrategy(ABC):
 class DataPreprocessStrategy(DataStrategy):
     def handle_data(self, data: pd.DataFrame) -> pd.DataFrame:
         try:
-            data=data.drop([
-                "jod_id",
-                "certification_name"
-            ],axis=1)
             label_encoder=LabelEncoder()
             data['job_title_encoded']=label_encoder.fit_transform(data['job_title'])
         except Exception as e:
